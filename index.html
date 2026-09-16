@@ -19,7 +19,7 @@ h3{font-size:19px;margin:0 0 6px}
 .lede{font-size:clamp(18px,2vw,21px);color:var(--soft);max-width:36em;margin:0 0 26px}
 .lede strong,p strong{color:var(--ink)}
 p{color:var(--soft);max-width:38em}
-.hero{display:grid;gap:48px;align-items:center;grid-template-columns:1.15fr .85fr;padding-top:24px}
+.hero-wrap{padding:0 0 40px}.hero{display:grid;gap:48px;align-items:center;grid-template-columns:1.15fr .85fr;padding-top:24px}
 .phone{border-radius:44px;overflow:hidden;box-shadow:0 40px 80px var(--shadow);background:#000;aspect-ratio:1320/2868;width:min(320px,100%);margin:0 auto;border:6px solid #1B1620}
 .phone img{display:block;width:100%;height:100%}
 .phone.tilt{transform:rotate(-4deg)}
@@ -61,28 +61,49 @@ form.join input{flex:1 1 240px;font:inherit;padding:15px 18px;border-radius:999p
 .band .note{color:#4A3F4D}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .icon{width:64px;height:64px;border-radius:16px;margin-bottom:22px;box-shadow:0 10px 24px var(--shadow)}
-footer{padding:40px 0 60px;font-size:14px;color:var(--muted);border-top:1px solid var(--sunken);margin-top:24px}
+footer{padding:40px 0 60px;font-size:14px;color:var(--muted);border-top:1px solid var(--sunken);margin-top:0}
 footer nav{margin:0 0 12px}footer nav a{margin:0 18px 0 0;color:var(--soft)}
 .doc{max-width:680px;padding-top:24px}.doc h1{font-size:40px}.doc h2{font-size:22px;margin-top:36px}.doc li{color:var(--soft)}
 .tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--coral);color:#1B1620;margin-left:8px;vertical-align:middle}
+section{position:relative;overflow:hidden}
+.sticker{position:absolute;font-size:96px;line-height:1;pointer-events:none;user-select:none;filter:drop-shadow(0 14px 22px rgba(27,22,32,.18));z-index:0}
+.sticker.s{font-size:64px}.sticker.l{font-size:132px}
+.wrap{position:relative;z-index:1}
+.phones{display:grid;gap:28px;grid-template-columns:repeat(3,1fr);align-items:end;margin-top:36px}
+.phones .phone{width:min(260px,100%)}
+.phones figure{margin:0;text-align:center}.phones figcaption{margin-top:16px;font-size:15px;color:var(--soft)}
+.phones figcaption b{display:block;color:var(--ink);font-size:17px;margin-bottom:2px}
+.band.ink .phones figcaption{color:#CFC4CC}.band.ink .phones figcaption b{color:#FFF6EE}
+.phone.tl{transform:rotate(-3deg)}.phone.tr{transform:rotate(3deg)}
+.features{display:grid;gap:14px 28px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:26px;padding:0;list-style:none}
+.features li{display:flex;gap:12px;align-items:flex-start;color:var(--soft)}
+.features li b{color:var(--ink)}.features .dot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--coral);margin-top:9px}
+.band .features li{color:#3A2F3D}.band .features li b{color:#1B1620}
+@media (max-width:760px){.sticker{font-size:56px}.sticker.l{font-size:72px}.sticker.s{font-size:40px}.phones{grid-template-columns:1fr}.phone.tl,.phone.tr{transform:none}}
 header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
 @media (max-width:760px){.hero,.split{grid-template-columns:1fr}.split.rev>:first-child{order:0}section{padding:52px 0}.phone.tilt{transform:none}header.top{padding:18px 0}header nav a:not(.pill){display:none}header nav a.pill{margin-left:0}.wordmark{font-size:30px}}
 </style></head><body><header class="top wrap"><a class="brand" href="index.html" aria-label="ember home"><img src="images/icon.png" alt="" width="34" height="34"><span class="wordmark">ember</span></a><nav aria-label="site"><a href="index.html#how">how it works</a><a href="index.html#light">your phone</a><a href="index.html#idea">the idea</a><a class="pill" href="index.html#join">join the waitlist</a></nav></header><main>
-<section class="wrap hero">
-  <div>
-    <span class="eyebrow">🔥 photos for your people: friends, family, the group chat</span>
-    <h1>nothing here<br>is forever.</h1>
-    <p class="lede"><strong>share photos with the people you actually mean</strong>, and watch them go when they go. no followers, no feed to be found on, no forever. and your phone stays light.</p>
-    <div class="buttons"><a class="button coral" href="#join">join the waitlist</a><a class="button" href="#how">how it works</a></div>
-    <p class="note">in beta on iPhone · invite only: a friend who has it lets you in 🎟️</p>
+<section class="hero-wrap">
+  <span class="sticker l" style="top:6%;right:-8px;transform:rotate(12deg)" aria-hidden="true">🔥</span>
+  <span class="sticker s" style="bottom:12%;left:2%;transform:rotate(-14deg)" aria-hidden="true">🫧</span>
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow">photos for your people: friends, family, the group chat</span>
+      <h1>nothing here<br>is forever.</h1>
+      <p class="lede"><strong>share photos with the people you actually mean</strong>, and watch them go when they go. no followers, no feed to be found on, no forever. and your phone stays light.</p>
+      <div class="buttons"><a class="button coral" href="#join">join the waitlist</a><a class="button" href="#social">see how it feels</a></div>
+      <p class="note">in beta on iPhone · invite only: a friend who has it lets you in</p>
+    </div>
+    <div class="phone tilt"><img src="images/trip.png" alt="the ember feed: waffle wednesday at the top, your live photos, and a friend's brunch drop with six days left" loading="lazy"></div>
   </div>
-  <div class="phone tilt"><img src="images/feed.png" alt="the ember feed: a circle's standing day at the top, your live photos, and a friend's drop below" loading="lazy"></div>
 </section>
 
 <section class="band" id="problem">
+  <span class="sticker" style="top:-14px;left:44%;transform:rotate(-8deg)" aria-hidden="true">💬</span>
+  <span class="sticker s" style="bottom:8%;right:4%;transform:rotate(18deg)" aria-hidden="true">📱</span>
   <div class="wrap split">
     <div>
-      <span class="eyebrow">💬 the group chat problem</span>
+      <span class="eyebrow">the group chat problem</span>
       <h2>six photos, four chats, every phone keeps every copy. forever.</h2>
       <p class="lede">a night out becomes a dozen sends. each one lands in somebody's camera roll and never leaves. months later the phone is full of other people's tuesdays, and nobody remembers which chat had the good one.</p>
       <p>ember is one place for exactly those photos, for the friends, the family and the trip, and it takes care of forgetting for you.</p>
@@ -97,59 +118,108 @@ header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
   </div>
 </section>
 
-<section class="wrap" id="how">
-  <span class="eyebrow">✨ how it works</span>
-  <h2>a circle, a clock, and the one you keep.</h2>
-  <p class="lede">post to a handful of friends. give it a life. watch it go, and keep only what mattered.</p>
-  <div class="cards">
-    <div class="card peach"><span class="emoji">🎟️</span><h3>a circle</h3><p>your friends, your family, the trip, the team. a handful of people, invited by a six-letter code read across a table. no search, no followers, no public profile.</p></div>
-    <div class="card lilac"><span class="emoji">⏳</span><h3>a clock</h3><p>every photo has one. a day, three days, a week. when it runs out the key is destroyed and the photo is gone, everywhere.</p></div>
-    <div class="card butter"><span class="emoji">🫧</span><h3>you can watch it go</h3><p>a photo loses resolution as it leaves, so you see it going. press and hold to see it whole, for as long as you hold.</p></div>
-    <div class="card mint"><span class="emoji">🔖</span><h3>keep the one that matters</h3><p>one photo in a week is usually worth keeping. keep it, and the person who posted it is told.</p></div>
-  </div>
-</section>
-
-<section class="wrap split rev" id="light">
-  <div class="phone"><img src="images/you.png" alt="the profile screen: 9 MB on this phone, 153.7 MB already gone" loading="lazy"></div>
-  <div>
-    <span class="eyebrow">📱 your phone stays light</span>
-    <h2>photos that leave take their megabytes with them.</h2>
-    <p class="lede">a photo you were sent lives on your phone for its week, then the key is destroyed and the copy is cleared. nothing piles up. the profile screen keeps count of what has already gone, and what would be sitting there without ember.</p>
-    <div class="stat" aria-label="storage on this phone">
-      <div class="big">153.7 MB</div>
-      <div class="small">already gone · 7.8 MB of friends' photos here now</div>
-      <div class="bar"><i></i></div>
-      <div class="small">without ember, everything friends had ever sent you would still be here: 161.6 MB and counting.</div>
+<section id="social">
+  <span class="sticker" style="top:4%;right:3%;transform:rotate(10deg)" aria-hidden="true">🎙️</span>
+  <span class="sticker s" style="top:38%;left:1%;transform:rotate(-10deg)" aria-hidden="true">😂</span>
+  <span class="sticker s" style="bottom:6%;right:18%;transform:rotate(6deg)" aria-hidden="true">❤️</span>
+  <div class="wrap">
+    <span class="eyebrow">still social. just for your people.</span>
+    <h2>post your day. post the trip. say it with your voice.</h2>
+    <p class="lede">everything a story or a group chat does, without the audience and without the pile-up. what you post goes to the people you chose and lasts as long as you said.</p>
+    <ul class="features">
+      <li><span class="dot"></span><span><b>your day, gone tomorrow.</b> post a photo to your friends for a day, like a story that only they can see. it is gone by this time tomorrow, everywhere.</span></li>
+      <li><span class="dot"></span><span><b>the trip, as a dump.</b> back from a weekend? post up to fifty photos in one go, give it a week, and pick exactly who gets in: a circle, a few friends, or everyone you know.</span></li>
+      <li><span class="dot"></span><span><b>talk on it.</b> leave a voice note on a photo, reply in the thread, react, stick a sticker or a gif on it. a private reply goes only to whoever posted.</span></li>
+      <li><span class="dot"></span><span><b>keep the one that matters.</b> one tap keeps a photo for good, in your keeps and your library. the person who posted it is told, because a copy taken openly is different from one taken quietly.</span></li>
+    </ul>
+    <div class="phones">
+      <figure><div class="phone tl"><img src="images/viewer.png" alt="a friend's photo open in ember, posted to everyone, 21 hours left, with a reply and a reaction" loading="lazy"></div><figcaption><b>a day, to everyone</b>a photo, a caption, 21 hours left.</figcaption></figure>
+      <figure><div class="phone"><img src="images/fadingphoto.png" alt="a brunch dump on its last day, softening into grain, with a voice note and reactions" loading="lazy"></div><figcaption><b>a dump, with a voice note</b>two photos, a voice note, fire heart laughing.</figcaption></figure>
+      <figure><div class="phone tr"><img src="images/comments.png" alt="the reply sheet on a photo, with a reply, a heart, and a bar for voice, stickers and gifs" loading="lazy"></div><figcaption><b>the thread</b>replies, voice, stickers, gifs, and a private reply.</figcaption></figure>
     </div>
   </div>
 </section>
 
-<section class="wrap" id="idea">
-  <span class="eyebrow">🧇 the idea</span>
-  <h2>no streaks. no likes to count. a reason to post, never an obligation.</h2>
-  <div class="steps">
-    <div class="step"><div class="n">1</div><h3>a standing day</h3><p>a circle can have a ritual, waffle wednesday or sunday's long way home. it is a reason to post, not a debt.</p></div>
-    <div class="step"><div class="n">2</div><h3>dumps, not singles</h3><p>a night out is six photos, not one. post them together and friends swipe through, like handing over your phone.</p></div>
-    <div class="step"><div class="n">3</div><h3>nothing to maintain</h3><p>no story to fill, no archive to curate, no feed to keep up with. it forgets so you do not have to.</p></div>
+<section class="band" id="how">
+  <span class="sticker" style="top:-10px;right:6%;transform:rotate(14deg)" aria-hidden="true">⏳</span>
+  <span class="sticker s" style="bottom:4%;left:3%;transform:rotate(-12deg)" aria-hidden="true">🎟️</span>
+  <div class="wrap">
+    <span class="eyebrow">how it works</span>
+    <h2>a circle, a clock, and the one you keep.</h2>
+    <p class="lede">post to a handful of people. give it a life. watch it go, and keep only what mattered.</p>
+    <div class="cards">
+      <div class="card peach"><h3>a circle</h3><p>your friends, your family, the trip, the team. a handful of people, invited by a six-letter code read across a table. no search, no followers, no public profile.</p></div>
+      <div class="card lilac"><h3>a clock</h3><p>every photo has one. a day, three days, a week. when it runs out the key is destroyed and the photo is gone, everywhere.</p></div>
+      <div class="card butter"><h3>you can watch it go</h3><p>a photo loses resolution as it leaves, so you see it going. press and hold to see it whole, for as long as you hold.</p></div>
+      <div class="card mint"><h3>keep the one that matters</h3><p>one photo in a week is usually worth keeping. keep it, and the person who posted it is told.</p></div>
+    </div>
   </div>
-  <p class="quote" style="margin-top:44px">"owing somebody a photo is how a group chat dies."<small>which is why there are no streaks in ember, on purpose.</small></p>
+</section>
+
+<section id="fade">
+  <span class="sticker l" style="top:10%;left:-10px;transform:rotate(-16deg)" aria-hidden="true">🫧</span>
+  <div class="wrap split rev">
+    <div class="phone tr"><img src="images/fadingphoto.png" alt="a photo on its last day in ember: grain lifting off the picture, 23 hours left, keep all before it goes" loading="lazy"></div>
+    <div>
+      <span class="eyebrow">you can watch it go</span>
+      <h2>it does not vanish off a cliff.</h2>
+      <p class="lede">across its life a photo loses resolution and lifts away into grain, so you can see it going and decide whether to keep it while there is still something to keep. press and hold to see it whole, for as long as you hold.</p>
+      <p>the big copies are let go first, which is also why a week of friends' photos costs your phone almost nothing.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="light">
+  <span class="sticker" style="top:8%;right:2%;transform:rotate(8deg)" aria-hidden="true">📱</span>
+  <span class="sticker s" style="bottom:10%;left:40%;transform:rotate(-6deg)" aria-hidden="true">🧹</span>
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">your phone stays light</span>
+      <h2>photos that leave take their megabytes with them.</h2>
+      <p class="lede">a photo you were sent lives on your phone for its week, then the key is destroyed and the copy is cleared. nothing piles up. the profile screen keeps count of what has already gone, and what would be sitting there without ember.</p>
+      <div class="stat" aria-label="storage on this phone">
+        <div class="big">153.7 MB</div>
+        <div class="small">already gone · 7.8 MB of friends' photos here now</div>
+        <div class="bar"><i></i></div>
+        <div class="small">without ember, everything friends had ever sent you would still be here: 161.6 MB and counting.</div>
+      </div>
+    </div>
+    <div class="phone tl"><img src="images/you.png" alt="the profile screen: 9 MB on this phone, 153.7 MB already gone" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="idea">
+  <span class="sticker" style="top:6%;right:4%;transform:rotate(-8deg)" aria-hidden="true">🧇</span>
+  <div class="wrap">
+    <span class="eyebrow">the idea</span>
+    <h2>no streaks. no likes to count. a reason to post, never an obligation.</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>a standing day</h3><p>a circle can have a ritual, waffle wednesday or sunday's long way home. it is a reason to post, not a debt.</p></div>
+      <div class="step"><div class="n">2</div><h3>dumps, not singles</h3><p>a night out is six photos, not one. post them together and friends swipe through, like handing over your phone.</p></div>
+      <div class="step"><div class="n">3</div><h3>nothing to maintain</h3><p>no story to fill, no archive to curate, no feed to keep up with. it forgets so you do not have to.</p></div>
+    </div>
+    <p class="quote" style="margin-top:44px">"owing somebody a photo is how a group chat dies."<small>which is why there are no streaks in ember, on purpose.</small></p>
+  </div>
 </section>
 
 <section class="band ink" id="sealed">
+  <span class="sticker" style="top:6%;right:5%;transform:rotate(10deg)" aria-hidden="true">🔒</span>
   <div class="wrap split">
     <div>
-      <span class="eyebrow">🔒 sealed before it leaves your phone</span>
+      <span class="eyebrow">small rooms, sealed</span>
       <h2>privacy here is arithmetic, not a policy.</h2>
-      <p class="lede">each photo is encrypted on your phone under its own key, wrapped for each friend's phone. the server holds bytes it cannot open. when the clock runs out the key is destroyed, and whatever is left anywhere is noise.</p>
+      <p class="lede">a circle is a room with a door: your friends, your family, the trip. each photo is encrypted on your phone under its own key, wrapped for each friend's phone. the server holds bytes it cannot open, and when the clock runs out the key is destroyed.</p>
       <p>no ads, no analytics, no third-party code, no location. screenshots are reported to whoever posted, and a friend can keep a photo only if you allowed it. <a href="privacy.html" style="color:#FF9A8B">the whole policy, in plain words</a>.</p>
     </div>
-    <div class="phone"><img src="images/viewer.png" alt="a photo open in ember, with its clock and who it went to" loading="lazy"></div>
+    <div class="phone tr"><img src="images/circles.png" alt="the circles screen: the usuals, lisbon, long way home, a one to one, and the friends list" loading="lazy"></div>
   </div>
 </section>
 
 <section class="band" id="join">
+  <span class="sticker l" style="top:-8px;right:8%;transform:rotate(12deg)" aria-hidden="true">🎟️</span>
+  <span class="sticker s" style="bottom:10%;left:4%;transform:rotate(-10deg)" aria-hidden="true">✉️</span>
   <div class="wrap">
-    <span class="eyebrow">🎟️ join the waitlist</span>
+    <span class="eyebrow">join the waitlist</span>
     <h2>it is invite only, for now.</h2>
     <p class="lede">leave an email and you are on the list; we let people in in waves. a friend who already has ember can let you straight in with their six letters.</p>
     <form class="join" id="join-form" novalidate>
@@ -177,7 +247,7 @@ header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
     fetch(url, { method: 'POST', headers: { 'apikey': key, 'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
       body: JSON.stringify({ email: email, note: 'site' }) })
     .then(function (r) {
-      if (r.ok) { note.textContent = "you're on the list. we'll write when it's your turn. 🔥"; form.reset(); }
+      if (r.ok) { note.textContent = "you're on the list. we'll write when it's your turn."; form.reset(); }
       else if (r.status === 409) { note.textContent = 'already on the list. sit tight.'; }
       else { note.textContent = 'that did not go through. try again in a minute, or email ' + 'rabiat.dev@gmail.com' + '.'; }
     })
@@ -185,4 +255,4 @@ header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
   });
 })();
 </script>
-</main><footer><div class="wrap"><nav aria-label="legal"><a href="privacy.html">privacy</a><a href="terms.html">terms</a><a href="support.html">support</a><a href="mailto:rabiat.dev@gmail.com">contact</a></nav>ember is made by Rabiat Sadiq. no cookies, no trackers, nothing to consent to. 🔥</div></footer></body></html>
+</main><footer><div class="wrap"><nav aria-label="legal"><a href="privacy.html">privacy</a><a href="terms.html">terms</a><a href="support.html">support</a><a href="mailto:rabiat.dev@gmail.com">contact</a></nav>ember is made by Rabiat Sadiq. no cookies, no trackers, nothing to consent to.</div></footer></body></html>

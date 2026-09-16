@@ -19,7 +19,7 @@ h3{font-size:19px;margin:0 0 6px}
 .lede{font-size:clamp(18px,2vw,21px);color:var(--soft);max-width:36em;margin:0 0 26px}
 .lede strong,p strong{color:var(--ink)}
 p{color:var(--soft);max-width:38em}
-.hero{display:grid;gap:48px;align-items:center;grid-template-columns:1.15fr .85fr;padding-top:24px}
+.hero-wrap{padding:0 0 40px}.hero{display:grid;gap:48px;align-items:center;grid-template-columns:1.15fr .85fr;padding-top:24px}
 .phone{border-radius:44px;overflow:hidden;box-shadow:0 40px 80px var(--shadow);background:#000;aspect-ratio:1320/2868;width:min(320px,100%);margin:0 auto;border:6px solid #1B1620}
 .phone img{display:block;width:100%;height:100%}
 .phone.tilt{transform:rotate(-4deg)}
@@ -61,10 +61,25 @@ form.join input{flex:1 1 240px;font:inherit;padding:15px 18px;border-radius:999p
 .band .note{color:#4A3F4D}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .icon{width:64px;height:64px;border-radius:16px;margin-bottom:22px;box-shadow:0 10px 24px var(--shadow)}
-footer{padding:40px 0 60px;font-size:14px;color:var(--muted);border-top:1px solid var(--sunken);margin-top:24px}
+footer{padding:40px 0 60px;font-size:14px;color:var(--muted);border-top:1px solid var(--sunken);margin-top:0}
 footer nav{margin:0 0 12px}footer nav a{margin:0 18px 0 0;color:var(--soft)}
 .doc{max-width:680px;padding-top:24px}.doc h1{font-size:40px}.doc h2{font-size:22px;margin-top:36px}.doc li{color:var(--soft)}
 .tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--coral);color:#1B1620;margin-left:8px;vertical-align:middle}
+section{position:relative;overflow:hidden}
+.sticker{position:absolute;font-size:96px;line-height:1;pointer-events:none;user-select:none;filter:drop-shadow(0 14px 22px rgba(27,22,32,.18));z-index:0}
+.sticker.s{font-size:64px}.sticker.l{font-size:132px}
+.wrap{position:relative;z-index:1}
+.phones{display:grid;gap:28px;grid-template-columns:repeat(3,1fr);align-items:end;margin-top:36px}
+.phones .phone{width:min(260px,100%)}
+.phones figure{margin:0;text-align:center}.phones figcaption{margin-top:16px;font-size:15px;color:var(--soft)}
+.phones figcaption b{display:block;color:var(--ink);font-size:17px;margin-bottom:2px}
+.band.ink .phones figcaption{color:#CFC4CC}.band.ink .phones figcaption b{color:#FFF6EE}
+.phone.tl{transform:rotate(-3deg)}.phone.tr{transform:rotate(3deg)}
+.features{display:grid;gap:14px 28px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:26px;padding:0;list-style:none}
+.features li{display:flex;gap:12px;align-items:flex-start;color:var(--soft)}
+.features li b{color:var(--ink)}.features .dot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--coral);margin-top:9px}
+.band .features li{color:#3A2F3D}.band .features li b{color:#1B1620}
+@media (max-width:760px){.sticker{font-size:56px}.sticker.l{font-size:72px}.sticker.s{font-size:40px}.phones{grid-template-columns:1fr}.phone.tl,.phone.tr{transform:none}}
 header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
 @media (max-width:760px){.hero,.split{grid-template-columns:1fr}.split.rev>:first-child{order:0}section{padding:52px 0}.phone.tilt{transform:none}header.top{padding:18px 0}header nav a:not(.pill){display:none}header nav a.pill{margin-left:0}.wordmark{font-size:30px}}
 </style></head><body><header class="top wrap"><a class="brand" href="index.html" aria-label="ember home"><img src="images/icon.png" alt="" width="34" height="34"><span class="wordmark">ember</span></a><nav aria-label="site"><a href="index.html#how">how it works</a><a href="index.html#light">your phone</a><a href="index.html#idea">the idea</a><a class="pill" href="index.html#join">join the waitlist</a></nav></header><main><div class="wrap doc"><h1>Privacy policy</h1>
@@ -90,4 +105,4 @@ header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
 <h2>Changes</h2>
 <p>We will tell you in the app before a change that matters takes effect.</p>
 <h2>Who we are</h2>
-<p>Ember is made by Rabiat Sadiq. Questions, requests about your data, and anything else: rabiat.dev@gmail.com. We answer within 30 days, usually much sooner.</p></div></main><footer><div class="wrap"><nav aria-label="legal"><a href="privacy.html">privacy</a><a href="terms.html">terms</a><a href="support.html">support</a><a href="mailto:rabiat.dev@gmail.com">contact</a></nav>ember is made by Rabiat Sadiq. no cookies, no trackers, nothing to consent to. 🔥</div></footer></body></html>
+<p>Ember is made by Rabiat Sadiq. Questions, requests about your data, and anything else: rabiat.dev@gmail.com. We answer within 30 days, usually much sooner.</p></div></main><footer><div class="wrap"><nav aria-label="legal"><a href="privacy.html">privacy</a><a href="terms.html">terms</a><a href="support.html">support</a><a href="mailto:rabiat.dev@gmail.com">contact</a></nav>ember is made by Rabiat Sadiq. no cookies, no trackers, nothing to consent to.</div></footer></body></html>
