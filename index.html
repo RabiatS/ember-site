@@ -1,71 +1,167 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="ember: photos for small circles. nothing here is forever."><title>ember</title><style>
-:root{color-scheme:light dark;--ink:#1B1620;--paper:#FBF6F1;--soft:#5E5563;--coral:#FF7E6B;--link:#B8402C}
-@media (prefers-color-scheme:dark){:root{--ink:#F3ECE6;--paper:#1B1620;--soft:#BDB3B8;--link:#FF9A8B}}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text",Helvetica,Arial,sans-serif}
-main{max-width:640px;margin:0 auto;padding:48px 24px 96px}
-h1{font-size:34px;line-height:1.1;margin:0 0 8px}h2{font-size:20px;margin:36px 0 8px}
-p,li{color:var(--soft)}strong{color:var(--ink)}
-a{color:var(--link);text-underline-offset:3px}a:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:4px}
-nav{font-size:15px;margin-bottom:40px}nav a{margin-right:16px}
-.wordmark{font:italic 700 40px/1 Georgia,"Times New Roman",serif;letter-spacing:-1px;margin-bottom:24px;display:block;color:var(--ink);text-decoration:none}
-.tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--coral);color:#1B1620;margin-left:8px;vertical-align:middle}
-footer{margin-top:64px;font-size:14px;color:var(--soft)}
-footer nav{margin:0 0 12px}footer nav a{margin:0 14px 0 0}
-.hero{display:grid;gap:32px;align-items:center;grid-template-columns:1.1fr .9fr;margin:24px 0 56px}
-@media (max-width:640px){.hero{grid-template-columns:1fr}}
-.hero h1{font-size:44px;letter-spacing:-1px}
-.hero p.lede{font-size:19px;color:var(--ink)}
-.phone{border-radius:38px;overflow:hidden;box-shadow:0 30px 60px rgba(27,22,32,.18);background:#000;aspect-ratio:1320/2868;max-width:300px;margin:0 auto}
+:root{color-scheme:light dark;--ink:#1B1620;--paper:#FDF8F4;--raised:#FFFFFF;--sunken:#F3ECE6;--soft:#5E5563;--muted:#8A8190;--coral:#FF7E6B;--butter:#FFDF9E;--peach:#FFB49A;--rose:#F9AFC6;--lilac:#C0B2F2;--sky:#9ED3F0;--mint:#9FE3C4;--sage:#BFDCA8;--link:#B8402C;--shadow:rgba(27,22,32,.14)}
+@media (prefers-color-scheme:dark){:root{--ink:#F3ECE6;--paper:#15121A;--raised:#201C28;--sunken:#2A2533;--soft:#BDB3B8;--muted:#8F8694;--link:#FF9A8B;--shadow:rgba(0,0,0,.5)}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-underline-offset:3px}a:focus-visible,button:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:26px 0;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.brand img{width:34px;height:34px;border-radius:9px;box-shadow:0 6px 14px var(--shadow)}
+.wordmark{font:italic 700 34px/1 Georgia,"Times New Roman",serif;letter-spacing:-1px;color:var(--ink);text-decoration:none}
+header nav a{margin-left:22px;color:var(--soft);text-decoration:none;font-weight:500;font-size:15px}
+header nav a:hover{color:var(--ink)}
+header nav a.pill{background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px}
+section{padding:72px 0}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--link);margin-bottom:12px}
+h1{font-size:clamp(40px,6vw,68px);line-height:1.02;letter-spacing:-1.5px;margin:0 0 20px}
+h2{font-size:clamp(30px,4vw,42px);line-height:1.08;letter-spacing:-.8px;margin:0 0 14px}
+h3{font-size:19px;margin:0 0 6px}
+.lede{font-size:clamp(18px,2vw,21px);color:var(--soft);max-width:36em;margin:0 0 26px}
+.lede strong,p strong{color:var(--ink)}
+p{color:var(--soft);max-width:38em}
+.hero{display:grid;gap:48px;align-items:center;grid-template-columns:1.15fr .85fr;padding-top:24px}
+.phone{border-radius:44px;overflow:hidden;box-shadow:0 40px 80px var(--shadow);background:#000;aspect-ratio:1320/2868;width:min(320px,100%);margin:0 auto;border:6px solid #1B1620}
 .phone img{display:block;width:100%;height:100%}
-.cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin:12px 0 8px}
-.card{border-radius:22px;padding:20px;color:#1B1620}
-.card h3{margin:0 0 6px;font-size:17px}.card p{margin:0;color:#1B1620;opacity:.78;font-size:15px}
+.phone.tilt{transform:rotate(-4deg)}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0 0 14px}
+.button{display:inline-block;background:var(--ink);color:var(--paper);padding:15px 24px;border-radius:999px;font-weight:600;text-decoration:none;border:0;font-size:16px;cursor:pointer;line-height:1.2}
+.button.coral{background:var(--coral);color:#1B1620}
+.button:hover{transform:translateY(-1px)}
+.note{font-size:14px;color:var(--muted);min-height:1.4em}
+.band{background:linear-gradient(135deg,var(--butter),var(--peach) 55%,var(--rose));color:#1B1620}
+.band p,.band .lede,.band .eyebrow{color:#3A2F3D}.band h2,.band strong{color:#1B1620}
+.band.ink{background:#1B1620;color:#FFF6EE}.band.ink p,.band.ink .lede{color:#CFC4CC}.band.ink h2,.band.ink strong,.band.ink h3{color:#FFF6EE}.band.ink .eyebrow{color:var(--coral)}
+.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:28px}
+.card{border-radius:26px;padding:26px 24px;color:#1B1620;box-shadow:0 14px 30px var(--shadow)}
+.card .emoji{font-size:34px;line-height:1;display:block;margin-bottom:14px}
+.card p{margin:0;color:#3A2F3D;font-size:15.5px;max-width:none}
 .peach{background:linear-gradient(135deg,#FFB49A,#F9AFC6)}.lilac{background:linear-gradient(135deg,#C0B2F2,#9ED3F0)}
 .mint{background:linear-gradient(135deg,#9FE3C4,#BFDCA8)}.butter{background:linear-gradient(135deg,#FFDF9E,#FFB49A)}
-.button{display:inline-block;background:var(--ink);color:var(--paper);padding:14px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:0;font-size:16px;cursor:pointer}
-.button.coral{background:var(--coral);color:#1B1620}
-.button:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
-form.join{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
-form.join input{flex:1 1 220px;font:inherit;padding:14px 16px;border-radius:999px;border:1px solid rgba(27,22,32,.12);background:var(--paper);color:var(--ink)}
-form.join input:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
-.note{font-size:14px;color:var(--soft);min-height:1.4em}
+.split{display:grid;gap:48px;align-items:center;grid-template-columns:1fr 1fr}
+.split.rev>:first-child{order:2}
+.stat{background:var(--raised);border-radius:26px;padding:26px;box-shadow:0 14px 30px var(--shadow);margin-top:22px;max-width:420px}
+.stat .big{font-size:44px;font-weight:800;letter-spacing:-1px;line-height:1;color:#1E7F59}
+.stat .small{font-size:14px;color:var(--soft);margin-top:6px}
+.stat .bar{height:8px;border-radius:999px;background:var(--sunken);margin:18px 0 8px;overflow:hidden}
+.stat .bar i{display:block;height:100%;width:6%;background:var(--mint);border-radius:999px}
+.chat{background:var(--raised);border-radius:26px;padding:22px;box-shadow:0 14px 30px var(--shadow);max-width:440px;margin:22px 0 0}
+.chat .row{display:flex;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--sunken);font-size:15px;color:var(--soft)}
+.chat .row:first-child{border-top:0}
+.chat .dot{width:34px;height:34px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:16px}
+.chat .row b{color:var(--ink);font-weight:600}
+.chat .row .mb{margin-left:auto;font-variant-numeric:tabular-nums;color:#C7432F;font-weight:600}
+.steps{counter-reset:s;display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:28px}
+.step{position:relative;padding-left:0}
+.step .n{width:40px;height:40px;border-radius:50%;background:var(--coral);color:#1B1620;display:grid;place-items:center;font-weight:800;margin-bottom:12px}
+.quote{font-size:clamp(24px,3vw,34px);line-height:1.2;letter-spacing:-.5px;font-weight:700;max-width:22em;margin:0}
+.quote small{display:block;font-size:15px;font-weight:500;color:var(--muted);margin-top:14px;letter-spacing:0}
+form.join{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 8px;max-width:560px}
+form.join input{flex:1 1 240px;font:inherit;padding:15px 18px;border-radius:999px;border:1px solid rgba(27,22,32,.14);background:var(--raised);color:var(--ink)}
+.band form.join input{background:#FFF9F3;color:#1B1620}
+.band .note{color:#4A3F4D}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-.icon{width:56px;height:56px;border-radius:14px;margin-bottom:16px;box-shadow:0 8px 20px rgba(27,22,32,.12)}
-</style></head><body><main><a class="wordmark" href="index.html" aria-label="ember home">ember</a><nav aria-label="site"><a href="index.html">home</a><a href="index.html#how">how it works</a><a href="index.html#about">about</a><a href="index.html#join">join the waitlist</a></nav>
-<section class="hero">
+.icon{width:64px;height:64px;border-radius:16px;margin-bottom:22px;box-shadow:0 10px 24px var(--shadow)}
+footer{padding:40px 0 60px;font-size:14px;color:var(--muted);border-top:1px solid var(--sunken);margin-top:24px}
+footer nav{margin:0 0 12px}footer nav a{margin:0 18px 0 0;color:var(--soft)}
+.doc{max-width:680px;padding-top:24px}.doc h1{font-size:40px}.doc h2{font-size:22px;margin-top:36px}.doc li{color:var(--soft)}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--coral);color:#1B1620;margin-left:8px;vertical-align:middle}
+header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
+@media (max-width:760px){.hero,.split{grid-template-columns:1fr}.split.rev>:first-child{order:0}section{padding:52px 0}.phone.tilt{transform:none}header.top{padding:18px 0}header nav a:not(.pill){display:none}header nav a.pill{margin-left:0}.wordmark{font-size:30px}}
+</style></head><body><header class="top wrap"><a class="brand" href="index.html" aria-label="ember home"><img src="images/icon.png" alt="" width="34" height="34"><span class="wordmark">ember</span></a><nav aria-label="site"><a href="index.html#how">how it works</a><a href="index.html#light">your phone</a><a href="index.html#idea">the idea</a><a class="pill" href="index.html#join">join the waitlist</a></nav></header><main>
+<section class="wrap hero">
   <div>
-    <img class="icon" src="images/icon.png" alt="" width="56" height="56">
-    <h1>photos for small circles.</h1>
-    <p class="lede"><strong>nothing here is forever.</strong> share photos with the people you actually mean, and watch them go when they go. no followers, no feed to be found on, no forever.</p>
-    <p><a class="button coral" href="#join">join the waitlist</a> &nbsp; <a class="button" href="#how">how it works</a></p>
-    <p class="note">in beta on iPhone. invite only: a friend who has it lets you in.</p>
+    <span class="eyebrow">🔥 photos for your people: friends, family, the group chat</span>
+    <h1>nothing here<br>is forever.</h1>
+    <p class="lede"><strong>share photos with the people you actually mean</strong>, and watch them go when they go. no followers, no feed to be found on, no forever. and your phone stays light.</p>
+    <div class="buttons"><a class="button coral" href="#join">join the waitlist</a><a class="button" href="#how">how it works</a></div>
+    <p class="note">in beta on iPhone · invite only: a friend who has it lets you in 🎟️</p>
   </div>
-  <div class="phone"><img src="images/feed.png" alt="the ember feed: a circle's standing day at the top, your live photos, and a friend's drop below" loading="lazy"></div>
+  <div class="phone tilt"><img src="images/feed.png" alt="the ember feed: a circle's standing day at the top, your live photos, and a friend's drop below" loading="lazy"></div>
 </section>
 
-<h2 id="how">how it works</h2>
-<div class="cards">
-  <div class="card peach"><h3>a circle</h3><p>a handful of friends, invited by a six-letter code read across a table. no search, no followers, no public profile.</p></div>
-  <div class="card lilac"><h3>a clock</h3><p>every photo has one. a day, three days, a week. when it runs out the key is destroyed and the photo is gone, everywhere.</p></div>
-  <div class="card butter"><h3>you can watch it go</h3><p>a photo loses resolution as it leaves, so you see it going. press and hold to see it whole, for as long as you hold.</p></div>
-  <div class="card mint"><h3>keep the one that matters</h3><p>one photo in a week is usually worth keeping. keep it, and the person who posted it is told.</p></div>
-</div>
+<section class="band" id="problem">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">💬 the group chat problem</span>
+      <h2>six photos, four chats, every phone keeps every copy. forever.</h2>
+      <p class="lede">a night out becomes a dozen sends. each one lands in somebody's camera roll and never leaves. months later the phone is full of other people's tuesdays, and nobody remembers which chat had the good one.</p>
+      <p>ember is one place for exactly those photos, for the friends, the family and the trip, and it takes care of forgetting for you.</p>
+    </div>
+    <div class="chat" aria-label="what sending photos by text costs">
+      <div class="row"><span class="dot" style="background:#FFB49A">🧇</span><span><b>the usuals</b> · 6 photos</span><span class="mb">18.4 MB</span></div>
+      <div class="row"><span class="dot" style="background:#C0B2F2">🌊</span><span><b>lisbon</b> · same 6 photos</span><span class="mb">18.4 MB</span></div>
+      <div class="row"><span class="dot" style="background:#9FE3C4">🏙️</span><span><b>maya</b> · same 6 again</span><span class="mb">18.4 MB</span></div>
+      <div class="row"><span class="dot" style="background:#FFDF9E">👪</span><span><b>family</b> · and again</span><span class="mb">18.4 MB</span></div>
+      <div class="row"><span class="dot" style="background:#F9AFC6">📱</span><span><b>on every phone, for years</b></span><span class="mb">×4</span></div>
+    </div>
+  </div>
+</section>
 
-<h2 id="about">the idea</h2>
-<p>most photo apps are built to make you post more and keep everything. ember is built for the opposite: the photos you would send to a group chat, in a place made for them, that takes care of forgetting for you.</p>
-<p>there are no streaks in this app on purpose. a circle can have a standing day, waffle wednesday or sunday's long way home, as a reason to post rather than an obligation to. <strong>owing somebody a photo is how a group chat dies.</strong></p>
-<p>a night out is six photos, not one. post them together and friends swipe through. and every photo is sealed on your phone before it leaves, under its own key, wrapped for each friend's phone: the server holds bytes it cannot open. privacy here is arithmetic, not a policy.</p>
+<section class="wrap" id="how">
+  <span class="eyebrow">✨ how it works</span>
+  <h2>a circle, a clock, and the one you keep.</h2>
+  <p class="lede">post to a handful of friends. give it a life. watch it go, and keep only what mattered.</p>
+  <div class="cards">
+    <div class="card peach"><span class="emoji">🎟️</span><h3>a circle</h3><p>your friends, your family, the trip, the team. a handful of people, invited by a six-letter code read across a table. no search, no followers, no public profile.</p></div>
+    <div class="card lilac"><span class="emoji">⏳</span><h3>a clock</h3><p>every photo has one. a day, three days, a week. when it runs out the key is destroyed and the photo is gone, everywhere.</p></div>
+    <div class="card butter"><span class="emoji">🫧</span><h3>you can watch it go</h3><p>a photo loses resolution as it leaves, so you see it going. press and hold to see it whole, for as long as you hold.</p></div>
+    <div class="card mint"><span class="emoji">🔖</span><h3>keep the one that matters</h3><p>one photo in a week is usually worth keeping. keep it, and the person who posted it is told.</p></div>
+  </div>
+</section>
 
-<h2 id="join">join the waitlist</h2>
-<p>ember is invite only while it is in beta. leave an email and you are on the list; we let people in in waves. a friend who already has ember can let you straight in with their code.</p>
-<form class="join" id="join-form" novalidate>
-  <label class="hp" for="website">leave this empty</label>
-  <input class="hp" id="website" name="website" type="text" tabindex="-1" autocomplete="off">
-  <label class="hp" for="email">your email</label>
-  <input id="email" name="email" type="email" placeholder="you@somewhere.com" required autocomplete="email" inputmode="email">
-  <button class="button coral" type="submit">join the waitlist</button>
-</form>
-<p class="note" id="join-note" role="status" aria-live="polite"></p>
+<section class="wrap split rev" id="light">
+  <div class="phone"><img src="images/you.png" alt="the profile screen: 9 MB on this phone, 153.7 MB already gone" loading="lazy"></div>
+  <div>
+    <span class="eyebrow">📱 your phone stays light</span>
+    <h2>photos that leave take their megabytes with them.</h2>
+    <p class="lede">a photo you were sent lives on your phone for its week, then the key is destroyed and the copy is cleared. nothing piles up. the profile screen keeps count of what has already gone, and what would be sitting there without ember.</p>
+    <div class="stat" aria-label="storage on this phone">
+      <div class="big">153.7 MB</div>
+      <div class="small">already gone · 7.8 MB of friends' photos here now</div>
+      <div class="bar"><i></i></div>
+      <div class="small">without ember, everything friends had ever sent you would still be here: 161.6 MB and counting.</div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="idea">
+  <span class="eyebrow">🧇 the idea</span>
+  <h2>no streaks. no likes to count. a reason to post, never an obligation.</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>a standing day</h3><p>a circle can have a ritual, waffle wednesday or sunday's long way home. it is a reason to post, not a debt.</p></div>
+    <div class="step"><div class="n">2</div><h3>dumps, not singles</h3><p>a night out is six photos, not one. post them together and friends swipe through, like handing over your phone.</p></div>
+    <div class="step"><div class="n">3</div><h3>nothing to maintain</h3><p>no story to fill, no archive to curate, no feed to keep up with. it forgets so you do not have to.</p></div>
+  </div>
+  <p class="quote" style="margin-top:44px">"owing somebody a photo is how a group chat dies."<small>which is why there are no streaks in ember, on purpose.</small></p>
+</section>
+
+<section class="band ink" id="sealed">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">🔒 sealed before it leaves your phone</span>
+      <h2>privacy here is arithmetic, not a policy.</h2>
+      <p class="lede">each photo is encrypted on your phone under its own key, wrapped for each friend's phone. the server holds bytes it cannot open. when the clock runs out the key is destroyed, and whatever is left anywhere is noise.</p>
+      <p>no ads, no analytics, no third-party code, no location. screenshots are reported to whoever posted, and a friend can keep a photo only if you allowed it. <a href="privacy.html" style="color:#FF9A8B">the whole policy, in plain words</a>.</p>
+    </div>
+    <div class="phone"><img src="images/viewer.png" alt="a photo open in ember, with its clock and who it went to" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="band" id="join">
+  <div class="wrap">
+    <span class="eyebrow">🎟️ join the waitlist</span>
+    <h2>it is invite only, for now.</h2>
+    <p class="lede">leave an email and you are on the list; we let people in in waves. a friend who already has ember can let you straight in with their six letters.</p>
+    <form class="join" id="join-form" novalidate>
+      <label class="hp" for="website">leave this empty</label>
+      <input class="hp" id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+      <label class="hp" for="email">your email</label>
+      <input id="email" name="email" type="email" placeholder="you@somewhere.com" required autocomplete="email" inputmode="email">
+      <button class="button" type="submit">join the waitlist</button>
+    </form>
+    <p class="note" id="join-note" role="status" aria-live="polite">no newsletter. one email, when it is your turn.</p>
+  </div>
+</section>
 <script>
 (function () {
   var form = document.getElementById('join-form');
@@ -81,7 +177,7 @@ form.join input:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
     fetch(url, { method: 'POST', headers: { 'apikey': key, 'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
       body: JSON.stringify({ email: email, note: 'site' }) })
     .then(function (r) {
-      if (r.ok) { note.textContent = "you're on the list. we'll write when it's your turn."; form.reset(); }
+      if (r.ok) { note.textContent = "you're on the list. we'll write when it's your turn. 🔥"; form.reset(); }
       else if (r.status === 409) { note.textContent = 'already on the list. sit tight.'; }
       else { note.textContent = 'that did not go through. try again in a minute, or email ' + 'rabiat.dev@gmail.com' + '.'; }
     })
@@ -89,4 +185,4 @@ form.join input:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
   });
 })();
 </script>
-<footer><nav aria-label="legal"><a href="privacy.html">privacy</a><a href="terms.html">terms</a><a href="support.html">support</a><a href="mailto:rabiat.dev@gmail.com">contact</a></nav>ember is made by Rabiat Sadiq. no cookies, no trackers, nothing to consent to.</footer></main></body></html>
+</main><footer><div class="wrap"><nav aria-label="legal"><a href="privacy.html">privacy</a><a href="terms.html">terms</a><a href="support.html">support</a><a href="mailto:rabiat.dev@gmail.com">contact</a></nav>ember is made by Rabiat Sadiq. no cookies, no trackers, nothing to consent to. 🔥</div></footer></body></html>
