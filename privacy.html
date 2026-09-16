@@ -66,7 +66,9 @@ footer nav{margin:0 0 12px}footer nav a{margin:0 18px 0 0;color:var(--soft)}
 .doc{max-width:680px;padding-top:24px}.doc h1{font-size:40px}.doc h2{font-size:22px;margin-top:36px}.doc li{color:var(--soft)}
 .tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--coral);color:#1B1620;margin-left:8px;vertical-align:middle}
 section{position:relative;overflow:hidden}
-.sticker{position:absolute;font-size:96px;line-height:1;pointer-events:none;user-select:none;filter:drop-shadow(0 14px 22px rgba(27,22,32,.18));z-index:0}
+.sticker{position:absolute;font-size:88px;line-height:1;user-select:none;-webkit-user-select:none;filter:drop-shadow(0 14px 22px rgba(27,22,32,.18));z-index:2;cursor:grab;touch-action:none;transition:filter .2s}
+.sticker:active,.sticker.dragging{cursor:grabbing;filter:drop-shadow(0 26px 34px rgba(27,22,32,.28));z-index:9}
+.sticker:focus-visible{outline:3px solid var(--coral);outline-offset:6px;border-radius:12px}
 .sticker.s{font-size:64px}.sticker.l{font-size:132px}
 .wrap{position:relative;z-index:1}
 .phones{display:grid;gap:28px;grid-template-columns:repeat(3,1fr);align-items:end;margin-top:36px}
@@ -79,7 +81,35 @@ section{position:relative;overflow:hidden}
 .features li{display:flex;gap:12px;align-items:flex-start;color:var(--soft)}
 .features li b{color:var(--ink)}.features .dot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--coral);margin-top:9px}
 .band .features li{color:#3A2F3D}.band .features li b{color:#1B1620}
-@media (max-width:760px){.sticker{font-size:56px}.sticker.l{font-size:72px}.sticker.s{font-size:40px}.phones{grid-template-columns:1fr}.phone.tl,.phone.tr{transform:none}}
+@media (max-width:760px){.sticker{font-size:44px;top:10px!important;right:10px!important;left:auto!important;bottom:auto!important;transform:rotate(8deg)!important}.sticker.l,.sticker.s{font-size:44px}.sticker~.sticker{display:none}.phones{grid-template-columns:1fr}.phone.tl,.phone.tr{transform:none}}
+.demo{display:grid;gap:36px;grid-template-columns:1fr 1fr;align-items:center}
+.demo .frame{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;background:#1B1620;box-shadow:0 30px 60px var(--shadow);cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:none}
+.demo .frame img{display:block;width:100%;height:100%;object-fit:cover;transition:filter .15s,opacity .15s}
+.demo canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .15s}
+.demo .glow{position:absolute;inset:0;opacity:0;transition:opacity .3s;background:linear-gradient(135deg,#3B6C8F,#7A8C7B 45%,#C9A57B 80%,#E0C9B0)}
+.demo .gone{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:opacity .3s;background:var(--paper);color:var(--soft);font-weight:600}
+.demo .gone i{position:absolute;inset:14px;border:2px dashed rgba(27,22,32,.22);border-radius:20px}
+.demo .hint{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:13px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6);pointer-events:none}
+.demo input[type=range]{width:100%;margin:18px 0 6px;accent-color:var(--coral)}
+.demo .row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.demo .day{font-weight:700;color:var(--ink)}
+.demo .chip{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(30,127,89,.14);color:#1E7F59}
+.demo .chip.soft{background:rgba(143,106,12,.14);color:#8F6A0C}.demo .chip.urgent{background:rgba(199,67,47,.14);color:#C7432F}.demo .chip.gone{background:var(--sunken);color:var(--soft)}
+.demo .explain{min-height:3.2em;font-size:15px;color:var(--soft);margin:8px 0 0}
+.thread{background:var(--raised);border-radius:26px;padding:20px;box-shadow:0 14px 30px var(--shadow);max-width:460px;margin:0 auto}
+.thread .msg{display:flex;gap:10px;align-items:flex-start;padding:9px 0}
+.thread .av{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:11px;font-weight:700;color:#1B1620}
+.thread .who{font-size:13px;color:var(--muted);margin-bottom:4px}.thread .who b{color:var(--ink);font-weight:600}
+.thread .bubble{display:inline-block;background:var(--sunken);color:var(--ink);padding:9px 13px;border-radius:16px;font-size:15px}
+.thread .bubble.lock{background:rgba(255,126,107,.16);border:1px dashed rgba(255,126,107,.6)}
+.thread .gif{width:150px;height:96px;border-radius:14px;background:linear-gradient(135deg,#C0B2F2,#9ED3F0);display:grid;place-items:center;font-weight:800;color:#1B1620;letter-spacing:.06em}
+.thread .big{font-size:44px;line-height:1}
+.thread .voice{display:inline-flex;align-items:center;gap:8px;background:var(--sunken);padding:8px 12px;border-radius:999px}
+.thread .voice .bars{display:flex;gap:2px;align-items:center;height:18px}.thread .voice .bars i{display:block;width:3px;border-radius:2px;background:var(--coral)}
+.thread .voice .play{width:22px;height:22px;border-radius:50%;background:var(--coral);display:grid;place-items:center;font-size:10px;color:#1B1620}
+.social-grid{display:grid;gap:40px;grid-template-columns:1.1fr .9fr;align-items:center;margin-top:8px}
+.social-grid .features{grid-template-columns:1fr;gap:12px}
+@media (max-width:760px){.demo,.social-grid{grid-template-columns:1fr}}
 header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
 @media (max-width:760px){.hero,.split{grid-template-columns:1fr}.split.rev>:first-child{order:0}section{padding:52px 0}.phone.tilt{transform:none}header.top{padding:18px 0}header nav a:not(.pill){display:none}header nav a.pill{margin-left:0}.wordmark{font-size:30px}}
 </style></head><body><header class="top wrap"><a class="brand" href="index.html" aria-label="ember home"><img src="images/icon.png" alt="" width="34" height="34"><span class="wordmark">ember</span></a><nav aria-label="site"><a href="index.html#how">how it works</a><a href="index.html#light">your phone</a><a href="index.html#idea">the idea</a><a class="pill" href="index.html#join">join the waitlist</a></nav></header><main><div class="wrap doc"><h1>Privacy policy</h1>

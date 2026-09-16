@@ -66,7 +66,9 @@ footer nav{margin:0 0 12px}footer nav a{margin:0 18px 0 0;color:var(--soft)}
 .doc{max-width:680px;padding-top:24px}.doc h1{font-size:40px}.doc h2{font-size:22px;margin-top:36px}.doc li{color:var(--soft)}
 .tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--coral);color:#1B1620;margin-left:8px;vertical-align:middle}
 section{position:relative;overflow:hidden}
-.sticker{position:absolute;font-size:96px;line-height:1;pointer-events:none;user-select:none;filter:drop-shadow(0 14px 22px rgba(27,22,32,.18));z-index:0}
+.sticker{position:absolute;font-size:88px;line-height:1;user-select:none;-webkit-user-select:none;filter:drop-shadow(0 14px 22px rgba(27,22,32,.18));z-index:2;cursor:grab;touch-action:none;transition:filter .2s}
+.sticker:active,.sticker.dragging{cursor:grabbing;filter:drop-shadow(0 26px 34px rgba(27,22,32,.28));z-index:9}
+.sticker:focus-visible{outline:3px solid var(--coral);outline-offset:6px;border-radius:12px}
 .sticker.s{font-size:64px}.sticker.l{font-size:132px}
 .wrap{position:relative;z-index:1}
 .phones{display:grid;gap:28px;grid-template-columns:repeat(3,1fr);align-items:end;margin-top:36px}
@@ -79,7 +81,35 @@ section{position:relative;overflow:hidden}
 .features li{display:flex;gap:12px;align-items:flex-start;color:var(--soft)}
 .features li b{color:var(--ink)}.features .dot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--coral);margin-top:9px}
 .band .features li{color:#3A2F3D}.band .features li b{color:#1B1620}
-@media (max-width:760px){.sticker{font-size:56px}.sticker.l{font-size:72px}.sticker.s{font-size:40px}.phones{grid-template-columns:1fr}.phone.tl,.phone.tr{transform:none}}
+@media (max-width:760px){.sticker{font-size:44px;top:10px!important;right:10px!important;left:auto!important;bottom:auto!important;transform:rotate(8deg)!important}.sticker.l,.sticker.s{font-size:44px}.sticker~.sticker{display:none}.phones{grid-template-columns:1fr}.phone.tl,.phone.tr{transform:none}}
+.demo{display:grid;gap:36px;grid-template-columns:1fr 1fr;align-items:center}
+.demo .frame{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;background:#1B1620;box-shadow:0 30px 60px var(--shadow);cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:none}
+.demo .frame img{display:block;width:100%;height:100%;object-fit:cover;transition:filter .15s,opacity .15s}
+.demo canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity .15s}
+.demo .glow{position:absolute;inset:0;opacity:0;transition:opacity .3s;background:linear-gradient(135deg,#3B6C8F,#7A8C7B 45%,#C9A57B 80%,#E0C9B0)}
+.demo .gone{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:opacity .3s;background:var(--paper);color:var(--soft);font-weight:600}
+.demo .gone i{position:absolute;inset:14px;border:2px dashed rgba(27,22,32,.22);border-radius:20px}
+.demo .hint{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:13px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6);pointer-events:none}
+.demo input[type=range]{width:100%;margin:18px 0 6px;accent-color:var(--coral)}
+.demo .row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.demo .day{font-weight:700;color:var(--ink)}
+.demo .chip{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(30,127,89,.14);color:#1E7F59}
+.demo .chip.soft{background:rgba(143,106,12,.14);color:#8F6A0C}.demo .chip.urgent{background:rgba(199,67,47,.14);color:#C7432F}.demo .chip.gone{background:var(--sunken);color:var(--soft)}
+.demo .explain{min-height:3.2em;font-size:15px;color:var(--soft);margin:8px 0 0}
+.thread{background:var(--raised);border-radius:26px;padding:20px;box-shadow:0 14px 30px var(--shadow);max-width:460px;margin:0 auto}
+.thread .msg{display:flex;gap:10px;align-items:flex-start;padding:9px 0}
+.thread .av{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:11px;font-weight:700;color:#1B1620}
+.thread .who{font-size:13px;color:var(--muted);margin-bottom:4px}.thread .who b{color:var(--ink);font-weight:600}
+.thread .bubble{display:inline-block;background:var(--sunken);color:var(--ink);padding:9px 13px;border-radius:16px;font-size:15px}
+.thread .bubble.lock{background:rgba(255,126,107,.16);border:1px dashed rgba(255,126,107,.6)}
+.thread .gif{width:150px;height:96px;border-radius:14px;background:linear-gradient(135deg,#C0B2F2,#9ED3F0);display:grid;place-items:center;font-weight:800;color:#1B1620;letter-spacing:.06em}
+.thread .big{font-size:44px;line-height:1}
+.thread .voice{display:inline-flex;align-items:center;gap:8px;background:var(--sunken);padding:8px 12px;border-radius:999px}
+.thread .voice .bars{display:flex;gap:2px;align-items:center;height:18px}.thread .voice .bars i{display:block;width:3px;border-radius:2px;background:var(--coral)}
+.thread .voice .play{width:22px;height:22px;border-radius:50%;background:var(--coral);display:grid;place-items:center;font-size:10px;color:#1B1620}
+.social-grid{display:grid;gap:40px;grid-template-columns:1.1fr .9fr;align-items:center;margin-top:8px}
+.social-grid .features{grid-template-columns:1fr;gap:12px}
+@media (max-width:760px){.demo,.social-grid{grid-template-columns:1fr}}
 header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
 @media (max-width:760px){.hero,.split{grid-template-columns:1fr}.split.rev>:first-child{order:0}section{padding:52px 0}.phone.tilt{transform:none}header.top{padding:18px 0}header nav a:not(.pill){display:none}header nav a.pill{margin-left:0}.wordmark{font-size:30px}}
 </style></head><body><header class="top wrap"><a class="brand" href="index.html" aria-label="ember home"><img src="images/icon.png" alt="" width="34" height="34"><span class="wordmark">ember</span></a><nav aria-label="site"><a href="index.html#how">how it works</a><a href="index.html#light">your phone</a><a href="index.html#idea">the idea</a><a class="pill" href="index.html#join">join the waitlist</a></nav></header><main>
@@ -119,23 +149,32 @@ header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
 </section>
 
 <section id="social">
-  <span class="sticker" style="top:4%;right:3%;transform:rotate(10deg)" aria-hidden="true">🎙️</span>
-  <span class="sticker s" style="top:38%;left:1%;transform:rotate(-10deg)" aria-hidden="true">😂</span>
-  <span class="sticker s" style="bottom:6%;right:18%;transform:rotate(6deg)" aria-hidden="true">❤️</span>
+  <span class="sticker" style="top:5%;right:3%;transform:rotate(10deg)" aria-hidden="true">🎙️</span>
+  <span class="sticker s" style="bottom:8%;left:2%;transform:rotate(-10deg)" aria-hidden="true">😂</span>
   <div class="wrap">
     <span class="eyebrow">still social. just for your people.</span>
-    <h2>post your day. post the trip. say it with your voice.</h2>
-    <p class="lede">everything a story or a group chat does, without the audience and without the pile-up. what you post goes to the people you chose and lasts as long as you said.</p>
-    <ul class="features">
-      <li><span class="dot"></span><span><b>your day, gone tomorrow.</b> post a photo to your friends for a day, like a story that only they can see. it is gone by this time tomorrow, everywhere.</span></li>
-      <li><span class="dot"></span><span><b>the trip, as a dump.</b> back from a weekend? post up to fifty photos in one go, give it a week, and pick exactly who gets in: a circle, a few friends, or everyone you know.</span></li>
-      <li><span class="dot"></span><span><b>talk on it.</b> leave a voice note on a photo, reply in the thread, react, stick a sticker or a gif on it. a private reply goes only to whoever posted.</span></li>
-      <li><span class="dot"></span><span><b>keep the one that matters.</b> one tap keeps a photo for good, in your keeps and your library. the person who posted it is told, because a copy taken openly is different from one taken quietly.</span></li>
-    </ul>
+    <h2>post your day. post the trip. talk on it.</h2>
+    <div class="social-grid">
+      <div>
+        <ul class="features">
+          <li><span class="dot"></span><span><b>your day.</b> a photo to your friends, gone by tomorrow.</span></li>
+          <li><span class="dot"></span><span><b>the trip.</b> up to fifty photos at once, a week to look, and you choose who gets in.</span></li>
+          <li><span class="dot"></span><span><b>the thread.</b> a reply, a voice note, a sticker, a gif. a private reply goes only to whoever posted.</span></li>
+          <li><span class="dot"></span><span><b>the keep.</b> one tap saves the photo that mattered. the poster is told.</span></li>
+        </ul>
+      </div>
+      <div class="thread" aria-label="a reply thread, as an example">
+        <div class="msg"><span class="av" style="background:#C0B2F2">MO</span><div><div class="who"><b>maya</b> · replied</div><span class="bubble">we said waffles. this happened.</span></div></div>
+        <div class="msg"><span class="av" style="background:#9FE3C4">JP</span><div><div class="who"><b>jun</b> · a gif</div><div class="gif">GIF</div></div></div>
+        <div class="msg"><span class="av" style="background:#FFDF9E">TL</span><div><div class="who"><b>theo</b> · a voice note · 0:08</div><span class="voice"><span class="play">▶</span><span class="bars"><i style="height:6px"></i><i style="height:12px"></i><i style="height:18px"></i><i style="height:9px"></i><i style="height:15px"></i><i style="height:7px"></i><i style="height:13px"></i><i style="height:17px"></i><i style="height:8px"></i><i style="height:11px"></i><i style="height:5px"></i></span></span></div></div>
+        <div class="msg"><span class="av" style="background:#F9AFC6">IM</span><div><div class="who"><b>inés</b> · a sticker</div><span class="big">🔥</span></div></div>
+        <div class="msg"><span class="av" style="background:#FFB49A">RS</span><div><div class="who"><b>you</b> · private, only maya sees this</div><span class="bubble lock">🔒 you look so happy in this one</span></div></div>
+      </div>
+    </div>
     <div class="phones">
-      <figure><div class="phone tl"><img src="images/viewer.png" alt="a friend's photo open in ember, posted to everyone, 21 hours left, with a reply and a reaction" loading="lazy"></div><figcaption><b>a day, to everyone</b>a photo, a caption, 21 hours left.</figcaption></figure>
-      <figure><div class="phone"><img src="images/fadingphoto.png" alt="a brunch dump on its last day, softening into grain, with a voice note and reactions" loading="lazy"></div><figcaption><b>a dump, with a voice note</b>two photos, a voice note, fire heart laughing.</figcaption></figure>
-      <figure><div class="phone tr"><img src="images/comments.png" alt="the reply sheet on a photo, with a reply, a heart, and a bar for voice, stickers and gifs" loading="lazy"></div><figcaption><b>the thread</b>replies, voice, stickers, gifs, and a private reply.</figcaption></figure>
+      <figure><div class="phone tl"><img src="images/viewer.png" alt="a friend's photo open in ember, posted to everyone, 21 hours left" loading="lazy"></div><figcaption><b>a day, to everyone</b>21 hours left.</figcaption></figure>
+      <figure><div class="phone"><img src="images/fadingphoto.png" alt="a brunch dump on its last day, with a voice note and reactions" loading="lazy"></div><figcaption><b>a dump, with a voice note</b>two photos, softening.</figcaption></figure>
+      <figure><div class="phone tr"><img src="images/comments.png" alt="the reply sheet on a photo" loading="lazy"></div><figcaption><b>the thread</b>replies, voice, stickers, gifs.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -157,14 +196,25 @@ header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
 </section>
 
 <section id="fade">
-  <span class="sticker l" style="top:10%;left:-10px;transform:rotate(-16deg)" aria-hidden="true">🫧</span>
-  <div class="wrap split rev">
-    <div class="phone tr"><img src="images/fadingphoto.png" alt="a photo on its last day in ember: grain lifting off the picture, 23 hours left, keep all before it goes" loading="lazy"></div>
-    <div>
-      <span class="eyebrow">you can watch it go</span>
-      <h2>it does not vanish off a cliff.</h2>
-      <p class="lede">across its life a photo loses resolution and lifts away into grain, so you can see it going and decide whether to keep it while there is still something to keep. press and hold to see it whole, for as long as you hold.</p>
-      <p>the big copies are let go first, which is also why a week of friends' photos costs your phone almost nothing.</p>
+  <span class="sticker s" style="top:8%;left:2%;transform:rotate(-16deg)" aria-hidden="true">🫧</span>
+  <div class="wrap">
+    <span class="eyebrow">you can watch it go</span>
+    <h2>it does not vanish off a cliff. try it.</h2>
+    <p class="lede">drag a week across one of our photos. press and hold the picture to see it whole, the way you can in the app.</p>
+    <div class="demo">
+      <div class="frame" id="demo-frame" role="img" aria-label="a photograph fading across a week; press and hold to see it whole">
+        <img id="demo-img" src="images/fade-demo.jpg" alt="" draggable="false">
+        <canvas id="demo-grain" aria-hidden="true"></canvas>
+        <div class="glow" id="demo-glow" aria-hidden="true"></div>
+        <div class="gone" id="demo-gone" aria-hidden="true"><i></i>gone. deleted everywhere.</div>
+        <div class="hint" id="demo-hint">press and hold to see it whole</div>
+      </div>
+      <div>
+        <div class="row"><span class="day" id="demo-day">just posted</span><span class="chip" id="demo-chip">full quality</span></div>
+        <input type="range" id="demo-range" min="0" max="1000" value="0" aria-label="age of the photo">
+        <p class="explain" id="demo-explain">the first half of the week is untouched. pinch in and you get the full photo.</p>
+        <p class="note" style="margin-top:14px">the big copies are let go first, which is also why a week of friends' photos costs your phone almost nothing.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -252,6 +302,89 @@ header nav{display:flex;align-items:center;flex-wrap:wrap;gap:6px 0}
       else { note.textContent = 'that did not go through. try again in a minute, or email ' + 'rabiat.dev@gmail.com' + '.'; }
     })
     .catch(function () { note.textContent = 'no connection. try again in a minute.'; });
+  });
+})();
+
+// the fade, as in the app: sharp, then the big copy goes, then softening, then grain, then the colours it came in with, then gone.
+(function () {
+  var frame = document.getElementById('demo-frame'), img = document.getElementById('demo-img'), grain = document.getElementById('demo-grain');
+  var glow = document.getElementById('demo-glow'), gone = document.getElementById('demo-gone'), hint = document.getElementById('demo-hint');
+  var range = document.getElementById('demo-range'), day = document.getElementById('demo-day'), chip = document.getElementById('demo-chip'), explain = document.getElementById('demo-explain');
+  if (!frame) return;
+  var held = false, ctx = grain.getContext('2d'), lastAmount = -1;
+  function stage(t) {
+    if (t >= 1) return {name: 'gone', chip: 'deleted', cls: 'gone', text: 'gone. deleted everywhere, and the key with it, so nobody can bring it back.'};
+    if (t >= 0.94) return {name: 'afterglow', chip: 'afterglow', cls: 'urgent', text: 'just the colours it came in with. everything else has gone.'};
+    if (t >= 0.78) return {name: 'grain', chip: 'almost gone', cls: 'urgent', text: 'mostly gone now. hours left. a press still brings it back, briefly.'};
+    if (t >= 0.55) return {name: 'soft', chip: 'softening', cls: 'soft', text: 'it starts to lift away. hold a finger on it to see it whole, for as long as you hold.'};
+    if (t >= 0.35) return {name: 'high', chip: 'still sharp', cls: '', text: 'the biggest copy is let go. you would not spot the difference on a phone.'};
+    return {name: 'full', chip: 'full quality', cls: '', text: 'the first half of the week is untouched. pinch in and you get the full photo.'};
+  }
+  function drawGrain(amount) {
+    var w = grain.width = frame.clientWidth, h = grain.height = frame.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+    if (amount <= 0) return;
+    var n = Math.floor(w * h * amount * 0.09);
+    for (var i = 0; i < n; i++) {
+      var x = Math.random() * w, y = Math.random() * h, s = 1 + Math.random() * 2.2;
+      ctx.fillStyle = Math.random() < 0.55 ? 'rgba(253,248,244,' + (0.5 + Math.random() * 0.5) + ')' : 'rgba(27,22,32,' + (0.4 + Math.random() * 0.5) + ')';
+      ctx.fillRect(x, y, s, s);
+    }
+  }
+  function render() {
+    var t = range.value / 1000, st = stage(t), shown = held ? 0 : t;
+    var age = Math.pow(shown, 3), dissolve = Math.pow(Math.max(0, (shown - 0.5) / 0.5), 2) * 0.55;
+    img.style.filter = 'saturate(' + (1 - age * 0.35) + ') blur(' + (age * 2.4) + 'px) sepia(' + (age * 0.25) + ')';
+    img.style.opacity = t >= 1 ? 0 : (st.name === 'afterglow' && !held ? 0.15 : 1 - dissolve * 0.45);
+    if (Math.abs(dissolve - lastAmount) > 0.01) { drawGrain(dissolve); lastAmount = dissolve; }
+    grain.style.opacity = dissolve > 0.01 ? 1 : 0;
+    glow.style.opacity = (!held && st.name === 'afterglow') ? 0.92 : 0;
+    gone.style.opacity = t >= 1 ? 1 : 0;
+    hint.style.opacity = (t >= 0.55 && t < 1) ? 1 : 0;
+    var d = t * 7;
+    day.textContent = t >= 1 ? 'gone' : (d < 1 ? 'just posted' : 'day ' + (Math.floor(d) + 1) + ' of 7');
+    chip.textContent = st.chip; chip.className = 'chip ' + st.cls;
+    explain.textContent = st.text;
+  }
+  range.addEventListener('input', render);
+  frame.addEventListener('pointerdown', function (e) { if (range.value < 1000) { held = true; render(); e.preventDefault(); } });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) { frame.addEventListener(ev, function () { held = false; render(); }); });
+  window.addEventListener('resize', function () { lastAmount = -1; render(); });
+  render();
+})();
+
+// stickers you can move. they stay where you put them, on this browser.
+(function () {
+  var bucket = window.innerWidth < 760 ? 'phone' : 'wide';
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem('ember.stickers.' + bucket) || '{}'); } catch (e) {}
+  var stickers = document.querySelectorAll('.sticker');
+  Array.prototype.forEach.call(stickers, function (el, i) {
+    var section = el.parentElement, id = 's' + i;
+    el.setAttribute('tabindex', '0'); el.setAttribute('aria-label', 'sticker, draggable');
+    if (store[id] && bucket === 'wide') { el.style.left = store[id].x + '%'; el.style.top = store[id].y + '%'; el.style.right = 'auto'; el.style.bottom = 'auto'; }
+    var drag = null;
+    el.addEventListener('pointerdown', function (e) {
+      var r = el.getBoundingClientRect(), sr = section.getBoundingClientRect();
+      drag = { dx: e.clientX - r.left, dy: e.clientY - r.top, sr: sr };
+      el.classList.add('dragging'); el.setPointerCapture(e.pointerId); e.preventDefault();
+    });
+    el.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var x = e.clientX - drag.dx - drag.sr.left, y = e.clientY - drag.dy - drag.sr.top;
+      x = Math.max(-el.offsetWidth * 0.4, Math.min(drag.sr.width - el.offsetWidth * 0.6, x));
+      y = Math.max(-el.offsetHeight * 0.4, Math.min(drag.sr.height - el.offsetHeight * 0.6, y));
+      el.style.left = x + 'px'; el.style.top = y + 'px'; el.style.right = 'auto'; el.style.bottom = 'auto';
+    });
+    function drop(e) {
+      if (!drag) return;
+      el.classList.remove('dragging');
+      var sr = section.getBoundingClientRect(), r = el.getBoundingClientRect();
+      store[id] = { x: ((r.left - sr.left) / sr.width) * 100, y: ((r.top - sr.top) / sr.height) * 100 };
+      try { localStorage.setItem('ember.stickers.' + bucket, JSON.stringify(store)); } catch (err) {}
+      drag = null;
+    }
+    el.addEventListener('pointerup', drop); el.addEventListener('pointercancel', drop);
   });
 })();
 </script>
