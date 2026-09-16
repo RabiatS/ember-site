@@ -10,15 +10,83 @@ nav{font-size:15px;margin-bottom:40px}nav a{margin-right:16px}
 .wordmark{font:italic 700 40px/1 Georgia,"Times New Roman",serif;letter-spacing:-1px;margin-bottom:24px;display:block;color:var(--ink);text-decoration:none}
 .tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--coral);color:#1B1620;margin-left:8px;vertical-align:middle}
 footer{margin-top:64px;font-size:14px;color:var(--soft)}
-</style></head><body><main><a class="wordmark" href="index.html" aria-label="ember home">ember</a><nav aria-label="site"><a href="index.html">ember</a><a href="privacy.html">privacy</a><a href="terms.html">terms</a><a href="support.html">support</a></nav>
-<h1>photos for small circles.</h1>
-<p><strong>nothing here is forever.</strong> share photos with the people you actually mean, and watch them go when they go. no followers, no feed to be found on, no forever.</p>
-<h2>small rooms, not an audience</h2>
-<p>you post to a circle: a handful of friends, invited by a six-letter code read across a table. there is no follower count, no search, no public profile.</p>
-<h2>you can watch it go</h2>
-<p>every photo has a clock on it. a day, three days, a week. it loses resolution as it goes, so you can see it leaving and keep the one worth keeping. when the clock runs out the key is destroyed, and the photo is gone on every phone and on ours.</p>
-<h2>sealed before it leaves your phone</h2>
-<p>each photo is encrypted on your phone under its own key, wrapped for each friend's phone. the server holds bytes it cannot open.</p>
-<p>ember is in beta on iPhone<span class="tag">beta</span>. it is invite only: a friend who has it lets you in.</p>
-<p><a href="privacy.html">privacy</a> · <a href="terms.html">terms</a> · <a href="support.html">support</a></p>
-<footer>ember is made by Rabiat Sadiq. <a href="mailto:rabiat.dev@gmail.com">rabiat.dev@gmail.com</a>. no cookies, no trackers, nothing to consent to.</footer></main></body></html>
+footer nav{margin:0 0 12px}footer nav a{margin:0 14px 0 0}
+.hero{display:grid;gap:32px;align-items:center;grid-template-columns:1.1fr .9fr;margin:24px 0 56px}
+@media (max-width:640px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:44px;letter-spacing:-1px}
+.hero p.lede{font-size:19px;color:var(--ink)}
+.phone{border-radius:38px;overflow:hidden;box-shadow:0 30px 60px rgba(27,22,32,.18);background:#000;aspect-ratio:1320/2868;max-width:300px;margin:0 auto}
+.phone img{display:block;width:100%;height:100%}
+.cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin:12px 0 8px}
+.card{border-radius:22px;padding:20px;color:#1B1620}
+.card h3{margin:0 0 6px;font-size:17px}.card p{margin:0;color:#1B1620;opacity:.78;font-size:15px}
+.peach{background:linear-gradient(135deg,#FFB49A,#F9AFC6)}.lilac{background:linear-gradient(135deg,#C0B2F2,#9ED3F0)}
+.mint{background:linear-gradient(135deg,#9FE3C4,#BFDCA8)}.butter{background:linear-gradient(135deg,#FFDF9E,#FFB49A)}
+.button{display:inline-block;background:var(--ink);color:var(--paper);padding:14px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:0;font-size:16px;cursor:pointer}
+.button.coral{background:var(--coral);color:#1B1620}
+.button:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+form.join{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+form.join input{flex:1 1 220px;font:inherit;padding:14px 16px;border-radius:999px;border:1px solid rgba(27,22,32,.12);background:var(--paper);color:var(--ink)}
+form.join input:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.note{font-size:14px;color:var(--soft);min-height:1.4em}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.icon{width:56px;height:56px;border-radius:14px;margin-bottom:16px;box-shadow:0 8px 20px rgba(27,22,32,.12)}
+</style></head><body><main><a class="wordmark" href="index.html" aria-label="ember home">ember</a><nav aria-label="site"><a href="index.html">home</a><a href="index.html#how">how it works</a><a href="index.html#about">about</a><a href="index.html#join">join the waitlist</a></nav>
+<section class="hero">
+  <div>
+    <img class="icon" src="images/icon.png" alt="" width="56" height="56">
+    <h1>photos for small circles.</h1>
+    <p class="lede"><strong>nothing here is forever.</strong> share photos with the people you actually mean, and watch them go when they go. no followers, no feed to be found on, no forever.</p>
+    <p><a class="button coral" href="#join">join the waitlist</a> &nbsp; <a class="button" href="#how">how it works</a></p>
+    <p class="note">in beta on iPhone. invite only: a friend who has it lets you in.</p>
+  </div>
+  <div class="phone"><img src="images/feed.png" alt="the ember feed: a circle's standing day at the top, your live photos, and a friend's drop below" loading="lazy"></div>
+</section>
+
+<h2 id="how">how it works</h2>
+<div class="cards">
+  <div class="card peach"><h3>a circle</h3><p>a handful of friends, invited by a six-letter code read across a table. no search, no followers, no public profile.</p></div>
+  <div class="card lilac"><h3>a clock</h3><p>every photo has one. a day, three days, a week. when it runs out the key is destroyed and the photo is gone, everywhere.</p></div>
+  <div class="card butter"><h3>you can watch it go</h3><p>a photo loses resolution as it leaves, so you see it going. press and hold to see it whole, for as long as you hold.</p></div>
+  <div class="card mint"><h3>keep the one that matters</h3><p>one photo in a week is usually worth keeping. keep it, and the person who posted it is told.</p></div>
+</div>
+
+<h2 id="about">the idea</h2>
+<p>most photo apps are built to make you post more and keep everything. ember is built for the opposite: the photos you would send to a group chat, in a place made for them, that takes care of forgetting for you.</p>
+<p>there are no streaks in this app on purpose. a circle can have a standing day, waffle wednesday or sunday's long way home, as a reason to post rather than an obligation to. <strong>owing somebody a photo is how a group chat dies.</strong></p>
+<p>a night out is six photos, not one. post them together and friends swipe through. and every photo is sealed on your phone before it leaves, under its own key, wrapped for each friend's phone: the server holds bytes it cannot open. privacy here is arithmetic, not a policy.</p>
+
+<h2 id="join">join the waitlist</h2>
+<p>ember is invite only while it is in beta. leave an email and you are on the list; we let people in in waves. a friend who already has ember can let you straight in with their code.</p>
+<form class="join" id="join-form" novalidate>
+  <label class="hp" for="website">leave this empty</label>
+  <input class="hp" id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+  <label class="hp" for="email">your email</label>
+  <input id="email" name="email" type="email" placeholder="you@somewhere.com" required autocomplete="email" inputmode="email">
+  <button class="button coral" type="submit">join the waitlist</button>
+</form>
+<p class="note" id="join-note" role="status" aria-live="polite"></p>
+<script>
+(function () {
+  var form = document.getElementById('join-form');
+  var note = document.getElementById('join-note');
+  var url = 'https://wjsgiwmjhozacovtzcqa.supabase.co/rest/v1/site_waitlist';
+  var key = 'sb_publishable_0Os5uNemyIcmssocZdQfTg_T8sLVqUP';
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (form.website.value) { return; }
+    var email = form.email.value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { note.textContent = 'that does not look like an email.'; return; }
+    note.textContent = 'one moment';
+    fetch(url, { method: 'POST', headers: { 'apikey': key, 'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ email: email, note: 'site' }) })
+    .then(function (r) {
+      if (r.ok) { note.textContent = "you're on the list. we'll write when it's your turn."; form.reset(); }
+      else if (r.status === 409) { note.textContent = 'already on the list. sit tight.'; }
+      else { note.textContent = 'that did not go through. try again in a minute, or email ' + 'rabiat.dev@gmail.com' + '.'; }
+    })
+    .catch(function () { note.textContent = 'no connection. try again in a minute.'; });
+  });
+})();
+</script>
+<footer><nav aria-label="legal"><a href="privacy.html">privacy</a><a href="terms.html">terms</a><a href="support.html">support</a><a href="mailto:rabiat.dev@gmail.com">contact</a></nav>ember is made by Rabiat Sadiq. no cookies, no trackers, nothing to consent to.</footer></main></body></html>
